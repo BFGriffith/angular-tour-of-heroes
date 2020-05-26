@@ -1,4 +1,4 @@
-//ng g s services/in-memory-data
+//ng generate service services/InMemoryData
 export class InMemoryDataService {
   createDb() {
     const heroes = [

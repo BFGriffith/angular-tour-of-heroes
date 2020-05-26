@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+//npm install angular-in-memory-web-api --save
 import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
