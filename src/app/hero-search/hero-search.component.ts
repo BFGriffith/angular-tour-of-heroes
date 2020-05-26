@@ -1,3 +1,5 @@
+//ng generate component hero-search
+//ng g c hero-search
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, of } from 'rxjs';
@@ -7,8 +9,8 @@ import {
   distinctUntilChanged,
   switchMap
 } from 'rxjs/operators';
-import { Hero } from './hero';
-import { HeroSearchService } from './hero-search.service';
+import { Hero } from '../hero';
+import { HeroSearchService } from '../services/hero-search.service';
 
 @Component({
   selector: 'my-hero-search',

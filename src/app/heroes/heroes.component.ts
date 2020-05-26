@@ -1,7 +1,9 @@
+//ng generate component heroes
+//ng g c heroes
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Hero } from '../hero';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'my-heroes',
