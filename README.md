@@ -20,6 +20,7 @@ npm install
 
 ## STEP-THREE: Build and Run the Angular development-server in your repository
 * Run `ng serve` for a dev server on the command-line in the root directory of your Angular application. Then navigate to `http://localhost:4200/` in a browser. The app will automatically reload if you change any of the source files (live reloading).
+* `ng serve --open` is a convenient shortcut
 
 ---
 
