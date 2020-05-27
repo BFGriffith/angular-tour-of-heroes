@@ -3,16 +3,21 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
     <span class="hero-element">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <span class="badge">{{hero.id}}</span>
+      <span routerLink="/detail/{{hero.id}}">{{hero.name}}</span>
     </span>
     <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
   </li>
 </ul>
 
 <div class="error" *ngIf="error">{{error}}</div>
-<button (click)="addHero()">Add New Hero</button>
-<div *ngIf="addingHero">
-  <my-hero-detail (close)="close($event)"></my-hero-detail>
+
+<div>
+  <label>Recruit and Train New Hero:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">Add Hero!</button>
 </div>
 
 <div *ngIf="selectedHero">
@@ -24,7 +29,7 @@
 
 <div>
   <style>
-    .hidden { visibility: hidden}
+    .hidden { visibility: hidden }
   </style>
   <h4>ngFor Features</h4>
   <button (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
@@ -42,3 +47,8 @@
     </tbody>
   </table>
 </div>
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

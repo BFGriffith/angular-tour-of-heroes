@@ -1,5 +1,6 @@
-//ng generate component hero-search
-//ng g c hero-search
+//ng generate component HeroSearch
+//ng g c HeroSearch
+//=> src/app/hero-search/hero-search.component...
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, of } from 'rxjs';
@@ -28,20 +29,20 @@ export class HeroSearchComponent implements OnInit {
   ) {}
 
   search(term: string): void {
-    // Push a search term into the observable stream.
+    //push a search term into the observable stream
     this.searchTerms.next(term);
   }
 
   ngOnInit(): void {
     this.heroes = this.searchTerms.pipe(
-      debounceTime(300), // wait for 300ms pause in events
-      distinctUntilChanged(), // ignore if next search term is same as previous
+      debounceTime(300), //wait for 300ms pause in events
+      distinctUntilChanged(), //ignore if next search term is same as previous
       switchMap(
         term =>
-          term // switch to new observable each time
-            ? // return the http search observable
+          term //switch to new observable each time
+            ? //return the http search observable
               this.heroSearchService.search(term)
-            : // or the observable of empty heroes if no search term
+            : //or the observable of empty heroes if no search term
               of<Hero[]>([])
       ),
       catchError(error => {
