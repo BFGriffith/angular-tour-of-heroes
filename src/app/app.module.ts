@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 //COMPONENTS:
 import { AppComponent } from './app.component';//bootstrap component
 //alphabetical list of components
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
 @NgModule({
@@ -15,8 +14,7 @@ import { HeroesComponent } from './heroes/heroes.component';
   ],
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent
+    HeroesComponent
   ],
   bootstrap: [ AppComponent ]
 })
