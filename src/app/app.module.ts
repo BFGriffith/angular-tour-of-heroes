@@ -4,17 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 //COMPONENTS:
 import { AppComponent } from './app.component';//bootstrap component
-//alphabetical list of components
-import { HeroesComponent } from './heroes/heroes.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    FormsModule
+    BrowserModule
   ],
   declarations: [
-    AppComponent,
-    HeroesComponent
+    AppComponent
   ],
   bootstrap: [ AppComponent ]
 })
