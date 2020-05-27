@@ -13,64 +13,20 @@ import { HeroService } from '../services/hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
-  selectedHero: Hero;
-  addingHero = false;
-  error: any;
-  showNgFor = false;
 
-  constructor(private router: Router, private heroService: HeroService) {}
+  constructor(private heroService: HeroService) { }
 
-  ngOnInit(): void {
-    //this.getHeroes();
-    this.heroService.getHeroes().subscribe(result => this.heroes = result);
+  ngOnInit() {
+    this.getHeroes();
   }
 
   getHeroes(): void {
-    this.heroService
-      .getHeroes()
-      .subscribe(
-        heroes => (this.heroes = heroes),
-        error => (this.error = error)
-      )
-  }
-
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.heroService.addHero({ name } as Hero)
-      .subscribe(hero => {
-        this.heroes.push(hero);
-      });
-  }
-
-  addHero(): void {
-    this.addingHero = true;
-    this.selectedHero = null;
-  }
-
-  close(savedHero: Hero): void {
-    this.addingHero = false;
-    if (savedHero) {
-      this.getHeroes();
-    }
-  }
-
-  deleteHero(hero: Hero, event: any): void {
-    event.stopPropagation();
-    this.heroService.deleteHero(hero).subscribe(res => {
-      this.heroes = this.heroes.filter(h => h !== hero);
-      if (this.selectedHero === hero) {
-        this.selectedHero = null;
-      }
-    }, error => (this.error = error));
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.addingHero = false;
-  }
-
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
   }
 }
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
