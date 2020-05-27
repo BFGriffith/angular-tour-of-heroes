@@ -1,12 +1,9 @@
 //ng generate component HeroDetail
 //ng g c Hero-Detail
 //=> src/app/hero-detail/hero-detail.component...
-import { Component, OnInit, } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Hero } from '../hero';
-import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -14,27 +11,14 @@ import { HeroService } from '../services/hero.service';
   styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-  hero: Hero;
 
-  constructor(
-    private route: ActivatedRoute,
-    private heroService: HeroService,
-    private location: Location
-  ) {}
+  @Input() hero: Hero;
 
-  ngOnInit(): void {
-    this.getHero();
+  constructor() { }
+
+  ngOnInit() {
   }
 
-  getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
 }
 /*
 Copyright Google LLC. All Rights Reserved.
