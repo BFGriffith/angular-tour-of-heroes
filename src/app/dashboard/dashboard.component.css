@@ -1,3 +1,4 @@
+/* DashboardComponent private CSS styles */
 [class*='col-'] {
   float: left;
 }
@@ -7,7 +8,7 @@
 	box-sizing: border-box;
 }
 h3 {
-  text-align: center; margin-bottom: 0;
+  text-align: left; margin-bottom: 0;
 }
 [class*='col-'] {
   padding-right: 20px;
@@ -65,3 +66,8 @@ h4 {
 	  min-width: 60px;
 	}
 }
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

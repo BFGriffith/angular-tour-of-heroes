@@ -1,5 +1,6 @@
-//ng generate component heroes
-//ng g c heroes
+//ng generate component Heroes
+//ng g c Heroes
+//=> src/app/heroes/heroes.component...
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Hero } from '../hero';
@@ -19,6 +20,11 @@ export class HeroesComponent implements OnInit {
 
   constructor(private router: Router, private heroService: HeroService) {}
 
+  ngOnInit(): void {
+    //this.getHeroes();
+    this.heroService.getHeroes().subscribe(result => this.heroes = result);
+  }
+
   getHeroes(): void {
     this.heroService
       .getHeroes()
@@ -26,6 +32,15 @@ export class HeroesComponent implements OnInit {
         heroes => (this.heroes = heroes),
         error => (this.error = error)
       )
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
   }
 
   addHero(): void {
@@ -42,16 +57,12 @@ export class HeroesComponent implements OnInit {
 
   deleteHero(hero: Hero, event: any): void {
     event.stopPropagation();
-    this.heroService.delete(hero).subscribe(res => {
+    this.heroService.deleteHero(hero).subscribe(res => {
       this.heroes = this.heroes.filter(h => h !== hero);
       if (this.selectedHero === hero) {
         this.selectedHero = null;
       }
     }, error => (this.error = error));
-  }
-
-  ngOnInit(): void {
-    this.getHeroes();
   }
 
   onSelect(hero: Hero): void {

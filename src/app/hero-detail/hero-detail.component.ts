@@ -1,7 +1,10 @@
-//ng generate component hero-detail
-//ng g c hero-detail
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+//ng generate component HeroDetail
+//ng g c Hero-Detail
+//=> src/app/hero-detail/hero-detail.component...
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { Hero } from '../hero';
 import { HeroService } from '../services/hero.service';
 
@@ -18,7 +21,8 @@ export class HeroDetailComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -29,13 +33,13 @@ export class HeroDetailComponent implements OnInit {
         this.heroService.getHero(id).subscribe(hero => (this.hero = hero));
       } else {
         this.navigated = false;
-        this.hero = new Hero();
+        this.heroService.addHero(this.hero);
       }
     });
   }
 
   save(): void {
-    this.heroService.save(this.hero).subscribe(hero => {
+    this.heroService.updateHero(this.hero).subscribe(hero => {
       this.hero = hero; // saved hero, w/ id if new
       this.goBack(hero);
     }, error => (this.error = error)); // TODO: Display error message
@@ -48,3 +52,8 @@ export class HeroDetailComponent implements OnInit {
     }
   }
 }
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
