@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';//bootstrap component
 //alphabetical list of components
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
-import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   imports: [
@@ -17,8 +16,7 @@ import { MessagesComponent } from './messages/messages.component';
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent
+    HeroDetailComponent
   ],
   bootstrap: [ AppComponent ]
 })
